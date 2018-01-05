@@ -1,0 +1,67 @@
+<p>
+  {{name}}
+</p>
+<ul>
+  <li>
+    Age: {{age}}
+  </li>
+  <li>Email: {{email}}</li>
+  <li>Address:
+    <ul>
+      <li>{{address.street}}</li>
+      <li>{{address.city}}</li>
+      <li>{{address.state}}</li>
+    </ul>
+  </li>
+</ul>
+
+<button (click)="onclick()"> Click Me</button>
+<button (click)="toggleEdit()"> Edit User</button>
+<div *ngIf=isEdit>
+  <h1>Edit User </h1>
+  <form>
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" [(ngModel)]="name" name="name">
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="text" [(ngModel)]="email" name="email">
+    </div>
+    <div>
+      <label for="age">Age:</label>
+      <input type="number" [(ngModel)]="age" name="age">
+    </div>
+
+    <div>
+      <label for="street">Street:</label>
+      <input type="text" [(ngModel)]="address.street" name="street">
+    </div>
+    <div>
+      <label for="city">City:</label>
+      <input type="text" [(ngModel)]="address.city" name="city">>
+    </div>
+    <div>
+      <label for="state">State:</label>
+      <input type="text" [(ngModel)]="address.state" name="state">>
+    </div>
+  </form>
+</div>
+<h1>Hobbies</h1>
+<form (submit)="AddHobby(item.value)">
+  <div>
+    <label for="item">Hobby</label>
+    <input type="text" #item>
+  </div>
+</form>
+<ul>
+  <li *ngFor="let item of hobbies">{{ item}}
+    <button (click)=deleteHobby(item)>X</button>
+  </li>
+</ul>
+<h1>Posts</h1>
+<div *ngFor="let itemPost of post">
+  <h4>{{itemPost.title}}</h4>
+  <P>{{itemPost.body}}</P>
+
+</div>
